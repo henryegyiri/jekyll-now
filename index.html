@@ -2,11 +2,18 @@
 layout: default
 ---
 
+<h1>Welcome!</h1>
+<p>
+  Thoughtful analysis and insights on economics, econometrics, and real-world issues, encompassing other disciplines.<br>
+  Browse the latest posts below and feel free to share your thoughts or questions.
+</p>
+<hr>
+
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
       <div class="entry">
         {{ post.excerpt }}

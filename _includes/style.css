@@ -1,0 +1,37 @@
+/* Navigation and dropdown styles */
+.site-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.site-nav .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.site-nav .dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1;
+  left: 0;
+  top: 100%;
+}
+
+.site-nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.site-nav .dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.site-nav .dropdown-content a:hover {
+  background: #f0f0f0;
+}

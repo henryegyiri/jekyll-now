@@ -1,42 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ site.lang }}">
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- Removed IE conditional comment as support for legacy IE versions is no longer required -->
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <!-- Dropdown styles merged into style.css to reduce HTTP requests -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
   <body>
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
             <p class="site-description">{{ site.description }}</p>
           </div>
 
-          <nav class="site-nav">
+          <nav class="site-nav" aria-label="Primary navigation">
             <a href="{{ site.baseurl }}/">Blog</a>
             <a href="{{ site.baseurl }}/about">About</a>
             <div class="dropdown">
-              <a href="#">Resources ▼</a>
-              <div class="dropdown-content">
-                <a href="{{ site.baseurl }}/contact">Contact</a>
-                <a href="{{ site.baseurl }}/projects">Projects</a>
+              <button id="resources-dropdown-btn" class="dropdown-btn" data-dropdown-id="resources-dropdown-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="resources-dropdown-menu" aria-label="Resources menu">
+                Resources ▼
+              </button>
+              <div id="resources-dropdown-menu" class="dropdown-content" role="menu" aria-labelledby="resources-dropdown-btn">
+                <a href="{{ site.baseurl }}/contact" role="menuitem">Contact</a>
+                <a href="{{ site.baseurl }}/projects" role="menuitem">Projects</a>
                 <!-- Add more dropdown links here -->
-              </div>
-            </div>
+              </div> <!-- dropdown-content -->
+            </div> <!-- dropdown -->
           </nav>
         </header>
       </div>
@@ -55,45 +52,6 @@
     </div>
 
     {% include analytics.html %}
+    <script defer src="{{ site.baseurl }}/dropdown.js"></script>
   </body>
 </html>
-
-<style>
-/* Add to your style.css */
-.site-nav {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.site-nav .dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.site-nav .dropdown-content {
-  display: none;
-  position: absolute;
-  background: #fff;
-  min-width: 140px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 1;
-  left: 0;
-  top: 100%;
-}
-
-.site-nav .dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.site-nav .dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  color: #333;
-  text-decoration: none;
-}
-
-.site-nav .dropdown-content a:hover {
-  background: #f0f0f0;
-}
-</style>
